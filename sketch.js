@@ -24,7 +24,7 @@ function setup() {
   strokeWeight(lineWidth);
   ellipseMode(CENTER);
   noFill();
-  steps = 5 + floor(random(11));
+  steps = 5 + floor(random(23));
   //steps = 7;
   r = (min(windowWidth, windowHeight) / 2) - 5;
   let n = floor(random(999));
