@@ -1,4 +1,4 @@
-// kaliedo1
+// kaliedo2
 
 const lineWidth = 1;
 let steps = 7;
@@ -10,6 +10,8 @@ let r = 0;
 let font;
 let fontsize = 30;
 let fr = 30;
+let showCircle = false;
+let showText = false;
 
 function preload() {
   font = loadFont('calibri-regular.ttf');
@@ -22,7 +24,7 @@ function setup() {
   strokeWeight(lineWidth);
   ellipseMode(CENTER);
   noFill();
-  steps = 3 + floor(random(11));
+  steps = 5 + floor(random(11));
   //steps = 7;
   r = (min(windowWidth, windowHeight) / 2) - 5;
   let n = floor(random(999));
@@ -43,7 +45,7 @@ function draw() {
   m += 0.001;
   background(220);
   a = TWO_PI / steps;
-  ellipse(0, 0, r * 2, r * 2);
+  if(showCircle) {ellipse(0, 0, r * 2, r * 2)};
   for(let i=0;i<steps;i++) {
     for(let b=a; b<PI; b+=a) {
       let px1 = 0;
@@ -54,7 +56,7 @@ function draw() {
     }
     rotate(a);
   }
-  showValues();
+  if(showText) {showValues()};
 }
 
 function render() {
@@ -76,6 +78,12 @@ function showValues() {
 function keyPressed() {
   console.log(keyCode);
   switch(keyCode) {
+    case 67:
+      showCircle = !showCircle;
+      break;
+    case 84:
+      showText = !showText;
+      break;
     case 68:
       m += 0.001;
       break;
@@ -92,7 +100,7 @@ function keyPressed() {
       steps += 1;
       break;
     case 83:
-      if(steps > 3) steps -= 1;
+      if(steps > 5) steps -= 1;
       break;
     
   }
