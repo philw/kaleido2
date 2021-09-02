@@ -12,6 +12,7 @@ let fontsize = 30;
 let fr = 30;
 let showCircle = false;
 let showText = false;
+let doChange = true;
 
 function preload() {
   font = loadFont('calibri-regular.ttf');
@@ -41,8 +42,9 @@ function draw() {
   offsetX = floor(windowWidth / 2);
   offsetY = floor(windowHeight / 2);
   translate(offsetX, offsetY);
-
-  m += 0.001;
+  if(doChange) {
+    m += 0.001;
+  }
   background(220);
   a = TWO_PI / steps;
   if(showCircle) {ellipse(0, 0, r * 2, r * 2)};
@@ -78,6 +80,9 @@ function showValues() {
 function keyPressed() {
   console.log(keyCode);
   switch(keyCode) {
+    case 32:
+      doChange = ! doChange;
+      break;
     case 67:
       showCircle = !showCircle;
       break;
